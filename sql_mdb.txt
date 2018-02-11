@@ -1,0 +1,56 @@
+Asli bawaan sql masyogi :
+
+SELECT userid,MAX(subuh)AS w_subuh,tanggal FROM (SELECT userid,subuh,subuh_dari,subuh_sampai,tanggal FROM (SELECT FORMAT(checktime,"hh:mm:ss")as subuh,userid,format(checktime,"dd/MM/yyyy")as tanggal from checkinout where checktime>=#2017-03-01# and checktime <=#2017-03-07#)b left join (select top 1 id_waktu,subuh_dari,subuh_sampai from t_setting where status='A' order by id_waktu desc)a on a.subuh_dari<=b.subuh and a.subuh_sampai >= b.subuh) where subuh_dari is not null group by userid,tanggal
+
+====================================================================================================================
+
+Sudah dirapikan :
+
+SELECT tanggal, userid, MAX(subuh)AS w_subuh 
+FROM 
+(
+	SELECT userid,subuh,subuh_dari,subuh_sampai,tanggal 
+		FROM 
+		(
+			SELECT FORMAT(checktime,"hh:mm:ss")as subuh,userid,format(checktime,"dd/MM/yyyy")as tanggal 
+			FROM checkinout 
+			WHERE checktime>=#2017-03-01# and checktime <=#2017-03-07#)b 
+			left join (select top 1 id_waktu,subuh_dari,subuh_sampai from t_setting where status='A' order by id_waktu desc)a 
+			on a.subuh_dari<=b.subuh and a.subuh_sampai >= b.subuh
+		) 
+	where subuh_dari is not null 
+	group by userid,tanggal 
+	order by userid
+
+====================================================================================================================
+
+Pecahan sql query diatas :
+
+SELECT format(checktime,"dd/MM/yyyy")as tanggal, userid, FORMAT(checktime,"hh:mm:ss")as w_subuh
+	FROM checkinout
+	WHERE checktime BETWEEN #2017-03-01# and #2017-03-07#
+
+====================================================================================================================
+
+Pecahan sql query diatas + left join :
+
+SELECT format(checktime,"dd/MM/yyyy")as tanggal, userid, FORMAT(checktime,"hh:mm:ss")as w_subuh
+	FROM checkinout
+	WHERE checktime BETWEEN #2017-03-01# and #2017-03-07#b 
+			left join (select top 1 id_waktu,subuh_dari,subuh_sampai from t_setting where status='A' order by id_waktu desc)a 
+			on a.subuh_dari<=b.subuh and a.subuh_sampai >= b.subuh
+
+
+====================================================================================================================
+
+SELECT userid,subuh,subuh_dari,subuh_sampai,tanggal 
+		FROM 
+		(
+			SELECT FORMAT(checktime,"hh:mm:ss")as subuh,userid,format(checktime,"dd/MM/yyyy")as tanggal 
+			FROM checkinout 
+			WHERE checktime>=#2017-03-01# and checktime <=#2017-03-07#
+		)b 
+			left join (
+				select top 1 id_waktu,subuh_dari,subuh_sampai from t_setting where status='A' order by id_waktu desc
+			)a 
+			on a.subuh_dari<=b.subuh and a.subuh_sampai >= b.subuh
