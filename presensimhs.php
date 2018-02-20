@@ -39,7 +39,7 @@
 	/*$sql = "SELECT USERID, Format(DateValue(CHECKTIME), 'd/mm/yyyy') AS tgl, Format(TimeValue(CHECKTIME)) AS wkt FROM CHECKINOUT WHERE USERID = 1352 AND Format(DateValue(CHECKTIME), 'd/mm/yyyy') BETWEEN #18/09/2017# AND #20/09/2017# ORDER BY Format(DateValue(CHECKTIME)), Format(TimeValue(CHECKTIME))";
 	*/
 
-	$sql = "SELECT USERID, Format(CHECKTIME, 'dd-mm-yyyy') AS tgl, Format(TimeValue(CHECKTIME)) AS wkt FROM CHECKINOUT WHERE (Format(DateValue(CHECKTIME), 'yyyy-mm-dd') BETWEEN '2017-09-30' AND '2017-09-30') AND (USERID = 1352) ORDER BY USERID, Format(DateValue(CHECKTIME), 'yyyy-mm-dd'), Format(TimeValue(CHECKTIME))";
+	$sql = "SELECT USERID, Format(CHECKTIME, 'dd-mm-yyyy') AS tgl, Format(TimeValue(CHECKTIME)) AS wkt FROM CHECKINOUT WHERE (Format(DateValue(CHECKTIME), 'yyyy-mm-dd') BETWEEN '2017-09-30' AND '2017-09-30') AND (USERID BETWEEN 1352 AND 1360) ORDER BY USERID, Format(DateValue(CHECKTIME), 'yyyy-mm-dd'), Format(TimeValue(CHECKTIME))";
 
 	$result = odbc_exec($koneksi, $sql);
 	$no = 1;
