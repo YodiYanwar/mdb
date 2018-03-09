@@ -28,4 +28,4 @@
 	}
 
 	//echo "Semua data berhasil diinput kedalam DB mysql !";
- ?> 		
+ ?> 
