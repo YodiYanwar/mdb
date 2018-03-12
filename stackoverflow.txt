@@ -31,3 +31,18 @@ Result :
 | 234    | 11/09/2015 | 14:05:27   | evening |
 | 234    | 12/09/2015 | 08:11:10   | morning |
 | 234    | 12/09/2015 | 20:20:55   | evening |
+
+
+SELECT UserID, DateValue(tapping_time) AS (Date), Min(TimeValue(tapping_time)) AS tapping_on, If(Hour(tapping_time) \ 12, "Evening", "Morning") AS Session
+FROM checktime
+GROUP BY UserID,
+DateValue(tapping_time),
+Hour(tapping_time) \ 12
+
+
+SELECT USERID, DateValue(CHECKTIME) AS Tanggal, Min(Format(TimeValue(CHECKTIME))) AS tapping_on
+FROM CHECKINOUT
+WHERE (Format(DateValue(CHECKTIME), 'yyyy-mm-dd') BETWEEN '2017-09-30' AND '2017-09-30') AND (USERID BETWEEN 1352 AND 1360) AND (TimeValue(CHECKTIME) BETWEEN '04:00:00' AND '04:59:00')
+GROUP BY USERID,
+DateValue(CHECKTIME),
+TimeValue(CHECKTIME)
