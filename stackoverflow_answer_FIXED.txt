@@ -1,0 +1,12 @@
+SELECT userid, tDatepart As [date], Min(t.tapping_time) As tapping_on, session FROM 
+    (
+        SELECT session_from, session_to, date_from, date_to, session
+        FROM ((timesetup i
+        LEFT JOIN dateperiod d ON i.period_id = d.period_id)
+        LEFT JOIN sessionrange q ON i.sessionrange_id = q.sessionrange_id)
+    ) As s
+INNER JOIN 
+    (SELECT Format(DateValue(tapping_time)) As tDatepart, Format(TimeValue(tapping_time)) As tTimePart, userid, tapping_time
+    FROM checktime) t
+ON ((t.tDatePart BETWEEN s.date_from AND s.date_to) AND (t.tTimePart BETWEEN s.session_from AND s.session_to))
+GROUP BY userid, tDatepart, session
