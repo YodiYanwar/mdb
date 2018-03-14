@@ -23,7 +23,7 @@ SELECT userid, tanggal As [date], Format(TimeValue(Min(t.CHECKTIME))) As tapping
     ) As s
 INNER JOIN 
     (SELECT Format(DateValue(CHECKTIME)) As tanggal, Format(TimeValue(CHECKTIME)) As tapping, userid, CHECKTIME
-    FROM CHECKINOUT WHERE (Format(DateValue(CHECKTIME)) BETWEEN '29/09/2017' AND '30/09/2017')) t
+    FROM CHECKINOUT WHERE (Format(DateValue(CHECKTIME), 'yyyy-mm-dd') BETWEEN '2017-09-29' AND '2017-09-30') AND (USERID = 503)) t
 ON ((t.tanggal BETWEEN s.date_from AND s.date_to) AND (t.tapping BETWEEN s.session_from AND s.session_to))
 GROUP BY userid, tanggal, session
 ORDER BY userid, tanggal, Format(TimeValue(Min(t.CHECKTIME)))
