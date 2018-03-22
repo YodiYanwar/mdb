@@ -27,3 +27,13 @@ INNER JOIN
 ON ((t.tanggal BETWEEN s.date_from AND s.date_to) AND (t.tapping BETWEEN s.session_from AND s.session_to))
 GROUP BY userid, tanggal, session
 ORDER BY userid, tanggal, Format(TimeValue(Min(t.CHECKTIME)))
+
+
+
+
+========================================================================
+
+SELECT Format(DateValue(CHECKTIME)) As tanggal, Format(TimeValue(CHECKTIME)) As tapping, u.userid, u.Badgenumber, CHECKTIME
+    FROM CHECKINOUT c
+    LEFT JOIN USERINFO u ON c.userid = u.userid
+    WHERE (Format(DateValue(c.CHECKTIME), 'yyyy-mm-dd') BETWEEN '2017-09-29' AND '2017-09-30') AND (u.Badgenumber = '16102048')

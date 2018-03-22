@@ -50,7 +50,15 @@ SELECT userid,subuh,subuh_dari,subuh_sampai,tanggal
 			FROM checkinout 
 			WHERE checktime>=#2017-03-01# and checktime <=#2017-03-07#
 		)b 
-			left join (
-				select top 1 id_waktu,subuh_dari,subuh_sampai from t_setting where status='A' order by id_waktu desc
-			)a 
-			on a.subuh_dari<=b.subuh and a.subuh_sampai >= b.subuh
+		left join (
+			select top 1 id_waktu,subuh_dari,subuh_sampai from t_setting where status='A' order by id_waktu desc
+		)a 
+		on a.subuh_dari<=b.subuh and a.subuh_sampai >= b.subuh
+
+
+====================================================================================================================
+
+SELECT u.userid, Badgenumber, Name, checktime
+FROM USERINFO u
+LEFT JOIN checkinout c ON u.userid = c.userid
+WHERE Badgenumber = '16102048'
