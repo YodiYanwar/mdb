@@ -1,5 +1,5 @@
 <?php 
-	$koneksi = odbc_connect( 'att2000', "", "");
+	$koneksi = odbc_connect( 'attBackup', "", "");
 /*
 	if ($koneksi) {
 		echo 'Connected';
