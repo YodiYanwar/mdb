@@ -40,7 +40,7 @@ SELECT Format(DateValue(CHECKTIME)) As tanggal, Format(TimeValue(CHECKTIME)) As 
 
 ========================================================================
 
-SELECT userid, u.Badgenumber, u.Name ,tanggal As [date], Format(TimeValue(Min(t.CHECKTIME))) As tapping_on, session FROM 
+SELECT userid, u.Badgenumber, tanggal As [date], Format(TimeValue(Min(t.CHECKTIME))) As tapping_on, session FROM 
     (
         SELECT session_from, session_to, date_from, date_to, session
         FROM ((timesetup i
@@ -53,10 +53,47 @@ INNER JOIN
     LEFT JOIN USERINFO u ON c.userid = u.userid
     WHERE (Format(DateValue(c.CHECKTIME), 'yyyy-mm-dd')  BETWEEN '2017-09-30' AND '2017-09-29') AND (u.Badgenumber = '16102048')) t
 ON ((t.tanggal BETWEEN s.date_from AND s.date_to) AND (t.tapping BETWEEN s.session_from AND s.session_to))
-GROUP BY userid, tanggal, session
-ORDER BY userid, tanggal, Format(TimeValue(Min(t.CHECKTIME)))    
+GROUP BY userid, tanggal, session, u.Badgenumber
+ORDER BY userid, tanggal, Format(TimeValue(Min(t.CHECKTIME)))      
 
 
 ========================================================================
 
 SELECT USERID,Badgenumber,Name FROM USERINFO WHERE (Badgenumber LIKE "17*") AND (Name NOT LIKE "17*") ORDER BY Name
+
+
+========================================================================
+
+SELECT userid, u.Badgenumber, tanggal As [date], Format(TimeValue(Min(t.CHECKTIME))) As tapping_on, session FROM 
+    (
+        SELECT session_from, session_to, date_from, date_to, session
+        FROM ((timesetup i
+        LEFT JOIN dateperiod d ON i.period_id = d.period_id)
+        LEFT JOIN sessionrange q ON i.sessionrange_id = q.sessionrange_id)
+    ) As s
+INNER JOIN 
+    (SELECT Format(DateValue(CHECKTIME)) As tanggal, Format(TimeValue(CHECKTIME)) As tapping, u.userid, u.Badgenumber, CHECKTIME
+    FROM CHECKINOUT c
+    LEFT JOIN USERINFO u ON c.userid = u.userid
+    WHERE (Format(DateValue(c.CHECKTIME), 'yyyy-mm-dd')  BETWEEN '2017-09-30' AND '2017-09-29') AND (u.Badgenumber LIKE '17101*')) t
+ON ((t.tanggal BETWEEN s.date_from AND s.date_to) AND (t.tapping BETWEEN s.session_from AND s.session_to))
+GROUP BY userid, tanggal, session, u.Badgenumber
+ORDER BY userid, tanggal, Format(TimeValue(Min(t.CHECKTIME)))  
+
+========================================================================
+
+SELECT userid AS id_mahasiswa, tanggal, Format(TimeValue(Min(t.CHECKTIME))) As wkt_tapping, session AS wkt_shalat FROM 
+    (
+        SELECT session_from, session_to, date_from, date_to, session
+        FROM ((timesetup i
+        LEFT JOIN dateperiod d ON i.period_id = d.period_id)
+        LEFT JOIN sessionrange q ON i.sessionrange_id = q.sessionrange_id)
+    ) As s
+INNER JOIN 
+    (SELECT Format(DateValue(CHECKTIME)) As tanggal, Format(TimeValue(CHECKTIME)) As tapping, u.userid, u.Badgenumber, CHECKTIME
+    FROM CHECKINOUT c
+    LEFT JOIN USERINFO u ON c.userid = u.userid
+    WHERE (Format(DateValue(c.CHECKTIME), 'yyyy-mm-dd')  BETWEEN '2017-09-30' AND '2017-09-29') AND (u.Badgenumber LIKE '17101*') AND (c.userid = 1320)) t
+ON ((t.tanggal BETWEEN s.date_from AND s.date_to) AND (t.tapping BETWEEN s.session_from AND s.session_to))
+GROUP BY userid, tanggal, session, u.Badgenumber
+ORDER BY userid, tanggal, Format(TimeValue(Min(t.CHECKTIME)))
