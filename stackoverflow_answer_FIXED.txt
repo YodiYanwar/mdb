@@ -97,3 +97,70 @@ INNER JOIN
 ON ((t.tanggal BETWEEN s.date_from AND s.date_to) AND (t.tapping BETWEEN s.session_from AND s.session_to))
 GROUP BY userid, tanggal, session, u.Badgenumber
 ORDER BY userid, tanggal, Format(TimeValue(Min(t.CHECKTIME)))
+
+========================================================================
+
+SELECT COUNT(userid) AS Total FROM USERINFO WHERE Badgenumber LIKE '17101*'
+
+========================================================================
+
+SELECT 
+COUNT(CASE WHEN nama LIKE 'A%' THEN 1 END) AS A, 
+COUNT(CASE WHEN nama LIKE 'B%' THEN 1 END) AS B, 
+COUNT(CASE WHEN nama LIKE 'C%' THEN 1 END) AS C,
+COUNT(CASE WHEN nama LIKE 'D%' THEN 1 END) AS D,
+COUNT(CASE WHEN nama LIKE 'E%' THEN 1 END) AS E,
+COUNT(CASE WHEN nama LIKE 'F%' THEN 1 END) AS F,
+COUNT(CASE WHEN nama LIKE 'G%' THEN 1 END) AS G,
+COUNT(CASE WHEN nama LIKE 'H%' THEN 1 END) AS H,
+COUNT(CASE WHEN nama LIKE 'I%' THEN 1 END) AS I,
+COUNT(CASE WHEN nama LIKE 'J%' THEN 1 END) AS J,
+COUNT(CASE WHEN nama LIKE 'K%' THEN 1 END) AS K,
+COUNT(CASE WHEN nama LIKE 'L%' THEN 1 END) AS L,
+COUNT(CASE WHEN nama LIKE 'M%' THEN 1 END) AS M,
+COUNT(CASE WHEN nama LIKE 'N%' THEN 1 END) AS N,
+COUNT(CASE WHEN nama LIKE 'O%' THEN 1 END) AS O,
+COUNT(CASE WHEN nama LIKE 'P%' THEN 1 END) AS P,
+COUNT(CASE WHEN nama LIKE 'Q%' THEN 1 END) AS Q,
+COUNT(CASE WHEN nama LIKE 'R%' THEN 1 END) AS R,
+COUNT(CASE WHEN nama LIKE 'S%' THEN 1 END) AS S,
+COUNT(CASE WHEN nama LIKE 'T%' THEN 1 END) AS T,
+COUNT(CASE WHEN nama LIKE 'U%' THEN 1 END) AS U,
+COUNT(CASE WHEN nama LIKE 'V%' THEN 1 END) AS V,
+COUNT(CASE WHEN nama LIKE 'W%' THEN 1 END) AS W,
+COUNT(CASE WHEN nama LIKE 'X%' THEN 1 END) AS X,
+COUNT(CASE WHEN nama LIKE 'Y%' THEN 1 END) AS Y,
+COUNT(CASE WHEN nama LIKE 'Z%' THEN 1 END) AS Z
+FROM tesmhs
+
+===============================================================
+
+MDB
+SELECT 
+Sum(IIf([Name] LIKE 'A*', 1, 0)) AS A, 
+Sum(IIf([Name] LIKE 'B*', 1, 0)) AS B, 
+Sum(IIf([Name] LIKE 'C*', 1, 0)) AS C,
+Sum(IIf([Name] LIKE 'D*', 1, 0)) AS D,
+Sum(IIf([Name] LIKE 'E*', 1, 0)) AS E,
+Sum(IIf([Name] LIKE 'F*', 1, 0)) AS F,
+Sum(IIf([Name] LIKE 'G*', 1, 0)) AS G,
+Sum(IIf([Name] LIKE 'H*', 1, 0)) AS H,
+Sum(IIf([Name] LIKE 'I*', 1, 0)) AS I,
+Sum(IIf([Name] LIKE 'J*', 1, 0)) AS J,
+Sum(IIf([Name] LIKE 'K*', 1, 0)) AS K,
+Sum(IIf([Name] LIKE 'L*', 1, 0)) AS L,
+Sum(IIf([Name] LIKE 'M*', 1, 0)) AS M,
+Sum(IIf([Name] LIKE 'N*', 1, 0)) AS N,
+Sum(IIf([Name] LIKE 'O*', 1, 0)) AS O,
+Sum(IIf([Name] LIKE 'P*', 1, 0)) AS P,
+Sum(IIf([Name] LIKE 'Q*', 1, 0)) AS Q,
+Sum(IIf([Name] LIKE 'R*', 1, 0)) AS R,
+Sum(IIf([Name] LIKE 'S*', 1, 0)) AS S,
+Sum(IIf([Name] LIKE 'T*', 1, 0)) AS T,
+Sum(IIf([Name] LIKE 'U*', 1, 0)) AS U,
+Sum(IIf([Name] LIKE 'V*', 1, 0)) AS V,
+Sum(IIf([Name] LIKE 'W*', 1, 0)) AS W,
+Sum(IIf([Name] LIKE 'X*', 1, 0)) AS X,
+Sum(IIf([Name] LIKE 'Y*', 1, 0)) AS Y,
+Sum(IIf([Name] LIKE 'Z*', 1, 0)) AS Z
+FROM USERINFO WHERE Badgenumber LIKE '17*';
