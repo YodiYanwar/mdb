@@ -1,31 +1,31 @@
 CREATE TABLE dateperiod(
-	period_id int primary key,
+	period_id AUTOINCREMENT primary key,
 	date_from date,
 	date_to date
 )
 
-INSERT INTO dateperiod(period_id, date_from, date_to) VALUES ('1', '01/09/2017', '02/09/2017');
-INSERT INTO dateperiod(period_id, date_from, date_to) VALUES ('2', '03/09/2017', '04/09/2017');
+INSERT INTO dateperiod(date_from, date_to) VALUES ('18/09/2017', '19/09/2017');
+INSERT INTO dateperiod(date_from, date_to) VALUES ('20/09/2017', '30/09/2017');
 
 
 CREATE TABLE sessionrange(
-	sessionrange_id int primary key,
+	sessionrange_id AUTOINCREMENT primary key,
 	session char(20),
 	session_from time,
 	session_to time
 )
 
-INSERT INTO sessionrange(sessionrange_id, session, session_from, session_to) VALUES ('1', 'shubuh', '04.00.00', '05.00.00');
-INSERT INTO sessionrange(sessionrange_id, session, session_from, session_to) VALUES ('2', 'dzuhur', '12.00.00', '13.00.00');
-INSERT INTO sessionrange(sessionrange_id, session, session_from, session_to) VALUES ('3', 'ashar', '15.00.00', '16.00.00');
-INSERT INTO sessionrange(sessionrange_id, session, session_from, session_to) VALUES ('4', 'maghrib', '18.00.00', '18.35.00');
-INSERT INTO sessionrange(sessionrange_id, session, session_from, session_to) VALUES ('5', 'isya', '19.00.00', '20.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('shubuh', '04.00.00', '05.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('dzuhur', '12.00.00', '13.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('ashar', '15.00.00', '16.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('maghrib', '18.00.00', '18.35.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('isya', '19.00.00', '20.00.00');
 
-INSERT INTO sessionrange(sessionrange_id, session, session_from, session_to) VALUES ('6', 'shubuh', '04.00.00', '05.00.00');
-INSERT INTO sessionrange(sessionrange_id, session, session_from, session_to) VALUES ('7', 'dzuhur', '12.00.00', '13.00.00');
-INSERT INTO sessionrange(sessionrange_id, session, session_from, session_to) VALUES ('8', 'ashar', '15.00.00', '16.00.00');
-INSERT INTO sessionrange(sessionrange_id, session, session_from, session_to) VALUES ('9', 'maghrib', '18.00.00', '18.35.00');
-INSERT INTO sessionrange(sessionrange_id, session, session_from, session_to) VALUES ('10', 'isya', '19.00.00', '20.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('shubuh', '04.00.00', '05.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('dzuhur', '12.00.00', '13.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('ashar', '15.00.00', '16.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('maghrib', '18.00.00', '18.35.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('isya', '19.00.00', '20.00.00');
 
 
 CREATE TABLE timesetup(
