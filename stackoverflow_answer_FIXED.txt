@@ -164,3 +164,9 @@ Sum(IIf([Name] LIKE 'X*', 1, 0)) AS X,
 Sum(IIf([Name] LIKE 'Y*', 1, 0)) AS Y,
 Sum(IIf([Name] LIKE 'Z*', 1, 0)) AS Z
 FROM USERINFO WHERE Badgenumber LIKE '17*';
+
+
+===============================================================
+
+DELETE FROM CHECKINOUT WHERE (Format(DateValue(CHECKTIME), 'yyyy-mm-dd') BETWEEN '2016-01-01' AND '2016-12-31')
+DELETE FROM USERINFO WHERE Badgenumber LIKE '16*'

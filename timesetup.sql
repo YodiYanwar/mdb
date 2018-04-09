@@ -5,7 +5,7 @@ CREATE TABLE dateperiod(
 )
 
 INSERT INTO dateperiod(date_from, date_to) VALUES ('18/09/2017', '19/09/2017');
-INSERT INTO dateperiod(date_from, date_to) VALUES ('20/09/2017', '30/09/2017');
+INSERT INTO dateperiod(date_from, date_to) VALUES ('01/01/2018', '30/04/2018');
 
 
 CREATE TABLE sessionrange(
