@@ -10,3 +10,25 @@ LEFT JOIN(
  LEFT JOIN pembina p ON mb.id_pembina = p.id_pembina
  LEFT JOIN mahasiswa m ON mb.id_mahasiswa = m.id_mahasiswa
 ) b ON pm.id_mhsbinaan = b.id_mhsbinaan
+
+
+====================================================================
+
+select pb.id_pbentuk, pb.nama_bentuk, count(distinct pm.id_pbentuk) AS Jumlah
+from pbentuk pb
+left join pmain pm ON pb.id_pbentuk = pm.id_pbentuk
+group by pb.nama_bentuk
+
+====================================================================
+
+SELECT id_pelanggaran, b.id_mahasiswa, b.namamhs, nama_bentuk, nama_aksi, nama_sanksi, nama_tindaklanjut, deskripsi, tanggal
+FROM pmain pm
+LEFT JOIN pbentuk pb ON pm.id_pbentuk = pb.id_pbentuk
+LEFT JOIN paksi pa ON pm.id_paksi = pa.id_paksi
+LEFT JOIN psanksi ps ON pm.id_psanksi = ps.id_psanksi
+LEFT JOIN planjut pl ON pm.id_planjut = pl.id_planjut
+LEFT JOIN(
+ SELECT m.id_mahasiswa, m.nama AS namamhs, mb.id_mhsbinaan
+ FROM m_binaan mb 
+ LEFT JOIN mahasiswa m ON mb.id_mahasiswa = m.id_mahasiswa
+) b ON pm.id_mhsbinaan = b.id_mhsbinaan
