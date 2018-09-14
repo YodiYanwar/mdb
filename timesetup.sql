@@ -89,7 +89,7 @@ INSERT INTO talim_timesetup (talim_period_id, talim_sessionrange_id) VALUES ('1'
 INSERT INTO talim_timesetup (talim_period_id, talim_sessionrange_id) VALUES ('1', '2');
 
 
-SELECT userid AS id_mahasiswa, Format(DateValue(c.CHECKTIME), 'dd-mm-yyyy') AS tgl, Format(TimeValue(Min(t.CHECKTIME))) As wkt_tapping, talim_session AS wkt_shalat 
+SELECT userid AS id_mahasiswa, Format(DateValue(c.CHECKTIME), 'dd-mm-yyyy') AS tgl, Format(TimeValue(Min(t.CHECKTIME))) As wkt_tapping, talim_session AS talim 
 FROM (
 	SELECT talim_session_from, talim_session_to, talim_date_from, talim_date_to, talim_session 
 	FROM (
