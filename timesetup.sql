@@ -15,11 +15,11 @@ CREATE TABLE sessionrange(
 	session_to time
 )
 
-INSERT INTO sessionrange(session, session_from, session_to) VALUES ('shubuh', '04.00.00', '06.00.00');
-INSERT INTO sessionrange(session, session_from, session_to) VALUES ('dzuhur', '12.00.00', '13.00.00');
-INSERT INTO sessionrange(session, session_from, session_to) VALUES ('ashar', '15.00.00', '16.00.00');
-INSERT INTO sessionrange(session, session_from, session_to) VALUES ('maghrib', '18.00.00', '18.35.00');
-INSERT INTO sessionrange(session, session_from, session_to) VALUES ('isya', '19.00.00', '20.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('shubuh', '04.00.00', '07.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('dzuhur', '12.00.00', '14.00.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('ashar', '15.00.00', '17.35.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('maghrib', '18.00.00', '18.45.00');
+INSERT INTO sessionrange(session, session_from, session_to) VALUES ('isya', '19.00.00', '21.45.00');
 
 INSERT INTO sessionrange(session, session_from, session_to) VALUES ('shubuh', '04.00.00', '06.00.00');
 INSERT INTO sessionrange(session, session_from, session_to) VALUES ('dzuhur', '12.00.00', '13.00.00');
