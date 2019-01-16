@@ -4,7 +4,7 @@ CREATE TABLE dateperiod(
 	date_to date
 )
 
-INSERT INTO dateperiod(date_from, date_to) VALUES ('01/04/2018', '30/04/2018');
+INSERT INTO dateperiod(date_from, date_to) VALUES ('9/11/2018', '15/11/2018');
 INSERT INTO dateperiod(date_from, date_to) VALUES ('01/05/2018', '30/05/2018');
 
 
